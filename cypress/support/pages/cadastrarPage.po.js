@@ -1,11 +1,8 @@
 class cadastroPage {
     inputNovoNome = "#name";
     inputNovoEmail = "#email";
-
-    visitar() {
-        cy.visit("");
-    }
     
+
     botaoNovoUsuario() {
         cy.get("a[href='/users/novo']").click()
     }
@@ -38,6 +35,10 @@ class cadastroPage {
         cy.contains('span', "Formato de e-mail inválido").should('be.visible') 
     }
 
+    nomeComMenosDe4Caracteres() {
+        cy.contains('span', 'Informe pelo menos 4 letras para o nome.').should('be.visible');
+    }
+
     mensagemErroUsuarioJaExiste() {
         cy.wait(1000)
         cy.contains("div", "Este e-mail já é utilizado por outro usuário").should("be.visible")
@@ -46,7 +47,7 @@ class cadastroPage {
     }
     
     mockCadastroUsuario() {
-        cy.intercept("https://crud-api-academy.herokuapp.com/api/v1/users", {
+        cy.intercept("POST", "https://crud-api-academy.herokuapp.com/api/v1/users", {
         statusCode: 201,
         body: { 
         "id": "1a8a17f9-25f1-488c-a6dd-6a1022332cc5", 
@@ -58,7 +59,7 @@ class cadastroPage {
     }
 
     mockUsuarioJaExistente() {
-        cy.intercept("https://crud-api-academy.herokuapp.com/api/v1/users", {
+        cy.intercept("POST", "https://crud-api-academy.herokuapp.com/api/v1/users", {
         statusCode: 422,
         body: { "error":"User already exists." } 
     })

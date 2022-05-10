@@ -1,11 +1,12 @@
+import { listaPage} from "../pages/listarPage.po"
 import { registroPage } from "../pages/cadastrarPage.po";
 
 Given("que acessei a tela principal", () => {
-    registroPage.visitar();
+    listaPage.visitar();
 
 });
 
-When("clico para adicionar um novo usuário", () => {
+Given("clico para adicionar um novo usuário", () => {
     registroPage.botaoNovoUsuario();
 });
 
@@ -56,7 +57,15 @@ Then("é exibida uma mensagem de erro informando que não é possível cadastrar
 Then("é exibida uma mensagem de erro informando que não é possível cadastrar um email com mais de 60 caracteres", () => {
 	registroPage.clicarEmSalvar();
     registroPage.emailComMaisDe60Caracteres();
+
+Then("é exibida mensagem de erro informando que não é possível cadastrar um usuário com menos de 4 letras", () => {
+    registroPage.nomeComMenosDe4Caracteres();
+    });
+    
+
+
 });
+
 
 
 

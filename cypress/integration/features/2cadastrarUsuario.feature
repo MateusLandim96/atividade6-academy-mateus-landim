@@ -42,4 +42,12 @@ Feature: Criar usuário
             | email | brunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobruno@g.com | 
             Then é exibida uma mensagem de erro informando que não é possível cadastrar um email com mais de 60 caracteres
 
-        Scenario: Voltar para tela inicial após um cadastro         
+        Scenario: Não deve ser possível cadastrar um usuário com menos de 4 letras
+            When informo um nome inválido
+            | nome | bru |
+            And informo um email válido  
+            | email | llandim@hotmail.com |
+            Then é exibida mensagem de erro informando que não é possível cadastrar um usuário com menos de 4 letras
+
+            
+    

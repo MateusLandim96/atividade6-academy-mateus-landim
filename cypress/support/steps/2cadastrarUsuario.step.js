@@ -22,7 +22,7 @@ When("informo um email válido", (tabela) => {
 });
 
 Then("o usuário é cadastrado exibindo uma mensagem de sucesso", () => {
-    registroPage.mockCadastroUsuario();
+    cy.interceptCadastroComSucesso();
     registroPage.clicarEmSalvar();
     registroPage.verificarModalCadastroComSucesso();
 });
@@ -39,7 +39,7 @@ Then("é exibida uma mensagem de erro informando que o email é inválido", () =
 });
 
 Then("a operação é anulada exibindo uma mensagem de erro informando que o email já existe", () => {
-	registroPage.mockUsuarioJaExistente();
+	cy.interceptCadastroExistente();
     registroPage.clicarEmSalvar();
     registroPage.mensagemErroUsuarioJaExiste();
 });
@@ -62,8 +62,6 @@ Then("é exibida mensagem de erro informando que não é possível cadastrar um 
     registroPage.nomeComMenosDe4Caracteres();
     });
     
-
-
 });
 
 

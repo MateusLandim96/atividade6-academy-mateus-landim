@@ -46,25 +46,6 @@ class cadastroPage {
         cy.contains("button", "x")
     }
     
-    mockCadastroUsuario() {
-        cy.intercept("POST", "https://crud-api-academy.herokuapp.com/api/v1/users", {
-        statusCode: 201,
-        body: { 
-        "id": "1a8a17f9-25f1-488c-a6dd-6a1022332cc5", 
-        "name": "br landim", 
-        "email": "llandim@hotmail.com", 
-        "updatedAt": "2022-05-08T03:45:04.379Z", 
-        "createdAt": "2022-05-08T03:45:04.379Z" } 
-    })
-    }
-
-    mockUsuarioJaExistente() {
-        cy.intercept("POST", "https://crud-api-academy.herokuapp.com/api/v1/users", {
-        statusCode: 422,
-        body: { "error":"User already exists." } 
-    })
-    }
-
 }
 
 export var registroPage = new cadastroPage();

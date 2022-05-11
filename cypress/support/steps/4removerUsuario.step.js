@@ -3,7 +3,8 @@ import { removePage } from "../pages/removerPage.po";
 
 
 Given("acessei a página inicial", () => {
-    //listaPage.interceptLista();
+    cy.viewport(1024, 768)
+	//listaPage.interceptLista();
 	listaPage.visitar();
 })    
 
@@ -12,7 +13,7 @@ Given("localizo um usuário na lista de usuários cadastrados", () => {
 });
 
 When("pesquiso o usuário na barra de pesquisa", () => {
-	
+	removePage.buscarUsuario();	
 });
 
 

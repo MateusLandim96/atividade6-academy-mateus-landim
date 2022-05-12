@@ -42,8 +42,7 @@ class cadastroPage {
         cy.contains('span', 'Informe pelo menos 4 letras para o nome.').should('be.visible');
     }
 
-    mensagemErroUsuarioJaExiste() {
-        cy.wait(1000)
+    mensagemErroUsuarioJaExiste() { 
         cy.contains("div", "Este e-mail já é utilizado por outro usuário").should("be.visible")
         cy.contains("button", "Cancelar").should('be.visible')
         cy.contains("button", "x")

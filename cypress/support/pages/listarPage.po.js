@@ -3,7 +3,7 @@ class listaUsuarios {
     usuarioDaLista = "#userData"
     
     visitar() {
-        cy.visit("/");
+        cy.visit("");
     }
 
     usuariosCadastrados() {

@@ -22,3 +22,52 @@ Feature: Atualizar um usuário
         | novoEmail | landim@gmail.com       |
         And confirmo as alterações
         Then o usuário é atualizado com sucesso    
+
+     Scenario Outline: Não deve ser possível atualizar o email de usuário com um formato inválido
+        Given que acessei a tela principal
+        And clico para ver as informações detalhadas do usuário
+        When clico para editar um usuário
+        And atualizo o email para outro com um formato inválido 
+        | emailInvalido | <emailInvalido> |
+        And confirmo as alterações
+        Then o usuário não é atualizado e é exibida uma mensagem de erro
+        | mensagem            | Formato de e-mail inválido | 
+        Examples:
+            | emailInvalido   | Formato de e-mail inválido | 
+            | landimgmail.com | Formato de e-mail inválido |      
+            | landim@gmail    | Formato de e-mail inválido |
+            | @g.com          | Formato de e-mail inválido | 
+
+        Scenario:  Não deve ser possível atualizar o email de usuário para um email já existente    
+            Given que acessei a tela principal
+            And clico para ver as informações detalhadas do usuário
+            When clico para editar um usuário
+            And atualizo o email de usuário para um email já existente 
+            | emailJaCadastrado | landim@gmail.com |
+            And confirmo as alterações feitas
+            Then o email do usuário não é atualizado e é exibida uma mensagem de erro informando que o email utilizado já existe
+
+        Scenario: Não deve ser possível atualizar o nome para que tenha mais de 100 caracteres
+            Given que acessei a tela principal
+            And clico para ver as informações detalhadas do usuário
+            When clico para editar um usuário
+            And atualizo o nome para outro nome que seja inválido
+            | nome     | br landim                                                                                              |
+            | novoNome | brunoBrunobrunoBrunobrunoBrunobrunoBrunobrunoBrunobrunoBrunobrunoBrunobrunoBrunobrunoBrunobrunoBrunoaa |
+            And confirmo as alterações
+            Then o usuário não é atualizado e é exibida uma mensagem de erro
+            | mensagem | Informe no máximo 100 caracteres para o nome |
+
+        
+        
+        
+        Scenario: Não deve ser possível atualizar o e-mail para que tenha mais de 60 caracteres   
+            Given que acessei a tela principal
+            And clico para ver as informações detalhadas do usuário
+            When clico para editar um usuário
+            And atualizo o email para outro com um formato inválido 
+            | email         | llandim@hotmail.com                                                                                                                |
+            | emailInvalido | landimlandimlandimlandimlandimlandimlandimlandimlandimlandimlandimlandimlandimlandimlandimlandimlandimlandimlandimlandim@gmail.com |
+            And confirmo as alterações
+            Then o usuário não é atualizado e é exibida uma mensagem de erro
+            | mensagem | Informe no máximo 60 caracteres para o e-mail | 

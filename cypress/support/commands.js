@@ -85,7 +85,7 @@ Cypress.Commands.add('interceptAtualizar', () =>
         })
     );
 
-    Cypress.Commands.add('interceptAtualizoComSucesso', () =>
+Cypress.Commands.add('interceptAtualizoComSucesso', () =>
     cy.intercept("PUT", "https://crud-api-academy.herokuapp.com/api/v1/users/1a8a17f9-25f1-488c-a6dd-6a1022332cc5", {
             statusCode: 200,
             body: { 
@@ -97,9 +97,32 @@ Cypress.Commands.add('interceptAtualizar', () =>
         })
     );
 
+Cypress.Commands.add('interceptAtualizarParaEmailExistente', () =>
+    cy.intercept("PUT", "https://crud-api-academy.herokuapp.com/api/v1/users/1a8a17f9-25f1-488c-a6dd-6a1022332cc5", {
+        statusCode: 422,
+        body: {"error":"E-mail already in use."}
+    })
 
+);
 
+Cypress.Commands.add('interceptDelete', () => {
+    cy.intercept('DELETE', 'https://crud-api-academy.herokuapp.com/api/v1/users/1a8a17f9-25f1-488c-a6dd-6a1022332cc5', {
+       statusCode: 204,
+        
+    })
+});
 
+Cypress.Commands.add('interceptBusca', () => {
+    cy.intercept("GET", "https://crud-api-academy.herokuapp.com/api/v1/search?value=br%20landim", {
+        statusCode: 200,
+        body: [{ 
+        "id": "1a8a17f9-25f1-488c-a6dd-6a1022332cc5", 
+        "name": "br landim", 
+        "email": "llandim@hotmail.com", 
+        "updatedAt": "2022-05-08T03:45:04.379Z", 
+        "createdAt": "2022-05-08T03:45:04.379Z",  }] 
+    })  
+});
 
 
 Cypress.Commands.add('interceptListaCheia', () =>  

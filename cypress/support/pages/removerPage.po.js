@@ -14,7 +14,7 @@ class excluirUsuario {
     };
 
     buscarUsuario() {
-        cy.get("input[autocomplete='off']").type();
+        cy.get("input[autocomplete='off']").type("br landim");
     }
 
 

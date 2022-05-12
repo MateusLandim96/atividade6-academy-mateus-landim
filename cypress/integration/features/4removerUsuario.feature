@@ -8,14 +8,15 @@ Feature: Remover um usuário
             And localizo um usuário na lista de usuários cadastrados
             When clico na opção para remover o usuário desejado
             And confirmo que desejo remover o usuário
-            And visualizo a confirmação da exclusão
+            Then visualizo a confirmação da exclusão
             | mensagem | Usuário removido! |
 
-        Scenario: Pesquisar por um usuário já removido
+        Scenario: Deletar um usuário pesquisando na barra de pesquisa
             Given acessei a página inicial
             When pesquiso o usuário na barra de pesquisa
             And clico na opção para remover o usuário desejado
             And confirmo que desejo remover o usuário
-            And pesquiso pelo usuário que já foi removido na barra de busca
-            Then o usuario não é encontrado   
+            Then visualizo a confirmação da exclusão
+            | mensagem | Usuário removido! |
+
         

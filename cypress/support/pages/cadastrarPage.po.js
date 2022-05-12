@@ -2,6 +2,9 @@ class cadastroPage {
     inputNovoNome = "#name";
     inputNovoEmail = "#email";
     
+    botaoVoltar() {
+        cy.contains("a", "Voltar").click()
+    }
 
     botaoNovoUsuario() {
         cy.get("a[href='/users/novo']").click()

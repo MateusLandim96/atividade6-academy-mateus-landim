@@ -62,7 +62,6 @@ Cypress.Commands.add('interceptCadastroComSucesso', () =>
             "updatedAt": "2022-05-08T03:45:04.379Z", 
             "createdAt": "2022-05-08T03:45:04.379Z" } 
         })
-
 );
 
 Cypress.Commands.add('interceptCadastroExistente', () =>

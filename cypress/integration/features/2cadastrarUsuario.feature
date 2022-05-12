@@ -49,5 +49,8 @@ Feature: Criar usuário
             | email | llandim@hotmail.com |
             Then é exibida mensagem de erro informando que não é possível cadastrar um usuário com menos de 4 letras
 
-            
+        Scenario: Deve ser possível retornar para a página inicial clicando no botão de Voltar
+            When clico na opção de voltar
+            Then a página retorna para a tela inicial
+
     

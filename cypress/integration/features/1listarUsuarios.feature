@@ -18,5 +18,17 @@ Feature: Listar usuários
         Given que acessei a página inicial
         When consulto a lista de usuários
         Then visualizo uma mensagem de erro relacionado ao servidor
-        | mensagem | Não foi possível consultar os usuários cadastrados. |       
+        | mensagem | Não foi possível consultar os usuários cadastrados. |
+
+    Scenario: Deve ser possível ir para próxima página na consulta de usuários
+        Given acessei a página inicial do sistema
+        When consulto a lista de usuários 
+        And clico para visualizar a próxima página
+        Then visualizo a lista com os usuários cadastrados 
+
+    Scenario: Deve ser possível voltar para página anterior na consulta de usuários
+        Given acessei a página inicial do sistema
+        When consulto a lista de usuários 
+        And clico para visualizar a página anterior
+        Then visualizo a lista com os usuários cadastrados              
     

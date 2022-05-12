@@ -1,6 +1,6 @@
 import { listaPage} from "../pages/listarPage.po"
 import {atualizaUserPage} from "../pages/atualizarPage.po"
-import { registroPage } from "../pages/cadastrarPage.po";
+
 
 Given("que acessei a tela principal", () => {
     cy.interceptCadastroComSucesso();
@@ -34,9 +34,6 @@ When("atualizo o nome para outro nome que seja inválido", (tabela) => {
     atualizaUserPage.atualizarParaNomeInvalido(nomeInvalido.novoNome)
 });
 
-
-
-
 When("atualizo o email para outro com um formato inválido", (tabela) => {
 	var invalidoEmail = tabela.rowsHash()
     atualizaUserPage.atualizarEmailInvalido(invalidoEmail.emailInvalido)
@@ -58,6 +55,17 @@ When("atualizo o email de usuário para um email já existente", (tabela) => {
 	var emailExistente = tabela.rowsHash();
     atualizaUserPage.atualizarEmailExistente(emailExistente.emailJaCadastrado)
 });
+
+
+When("clico no logotipo do site", () => {
+	listaPage.clicarHome();
+});
+
+Then("sistema retorna para a tela inicial", () => {
+	listaPage.paginaAnterior();
+    listaPage.proximaPagina();
+});
+
 
 Then("o usuário é atualizado com sucesso", () => {
 	atualizaUserPage.confirmAtualizadoComSucesso()
